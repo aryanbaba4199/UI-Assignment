@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavBar() {
+export default function NavBar({setMenu, menu}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -80,6 +80,7 @@ export default function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -94,6 +95,7 @@ export default function NavBar() {
         vertical: "top",
         horizontal: "right",
       }}
+      
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
@@ -116,6 +118,7 @@ export default function NavBar() {
         vertical: "top",
         horizontal: "right",
       }}
+      onClick={()=>setMenu(!menu)}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -169,7 +172,7 @@ export default function NavBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon onClick={()=>setMenu(!menu)} />
           </IconButton>
           <Typography
             variant="h6"
