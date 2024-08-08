@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { headerData } from "../constants";
 import { DashBoardData } from "../constants";
 import { OrdersData } from "../constants";
@@ -13,7 +13,7 @@ import {
   YAxis,
   PieChart,
   Cell,
-  CartesianGrid,
+ 
   Legend,
   Tooltip,
 } from "recharts";
@@ -25,11 +25,9 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button,
-  Collapse,
-  Box,
+
 } from "@mui/material";
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+
 import StarIcon from '@mui/icons-material/Star';
 
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
@@ -38,7 +36,7 @@ import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 
 const Home = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+
 
 
   const transformedData = OrderData.map((item) => ({
@@ -63,8 +61,8 @@ const Home = () => {
       <div className="bg-black text-gray-100 flex justify-between md:w-[70%] w-full">
         <div className="w-full">
           <div className="flex justify-between px-4 items-center flex-wrap">
-            {DashBoardData.map((item) => (
-              <div className="flex flex-col bg-gray-900 p-2 px-2 w-32 mt-2 rounded-md">
+            {DashBoardData.map((item, index) => (
+              <div key={index} className="flex flex-col bg-gray-900 p-2 px-2 w-32 mt-2 rounded-md">
                 <span className="">{item.icon}</span>
                 <span className="mt-1">{item.text}</span>
                 <div className="flex justify-between items-center mt-2">
@@ -120,20 +118,7 @@ const Home = () => {
                   <TableCell>{item.status===0 ? 'Delivered' : 'Cancelled'}</TableCell>
                   
                 </TableRow>
-                <TableRow>
-                  <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
-                    <Collapse in={openIndex === index} timeout="auto" unmountOnExit>
-                      <Box margin={1}>
-                        <div className="flex flex-col">
-                          <span><strong>Customer:</strong> {item.customer}</span>
-                          <span><strong>Order No:</strong> {item.orderno}</span>
-                          <span><strong>Amount:</strong> {item.amount}</span>
-                          <span><strong>Status:</strong> {item.status===0 ? 'Delivered' : 'Cancelled'}</span>
-                        </div>
-                      </Box>
-                    </Collapse>
-                  </TableCell>
-                </TableRow>
+                
               </React.Fragment>
             ))}
           </TableBody>
@@ -162,6 +147,7 @@ const Home = () => {
               >
                 {data.map((entry, index) => (
                   <Cell
+
                     className="text-white"
                     key={`cell-${index}`}
                     fill={COLORS[index % COLORS.length]}
@@ -230,9 +216,9 @@ const Home = () => {
         </div>
         <div className="w-full bg-gray-900 mt-4 p-2">
           {customerFeedback.map((item, index) => (
-            <div className="w-full">
+            <div key={index} className="w-full">
               <div className="flex gap-2 mt-2">
-                <img src={item.image} className="w-8 h-8 rounded-full" />
+                <img alt="" src={item.image} className="w-8 h-8 rounded-full" />
                 <span className="font-semibold">{item.name}</span>
               </div>
 
