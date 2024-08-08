@@ -19,14 +19,14 @@ export const DashBoardData = [
     {
         icon : <LocalMallIcon className='text-red-500 bg-[#8d0f20] rounded-md text-xl p-1'/>,
         text : 'Total Cancelled',
-        value : 75,
+        value : 70,
         percentage : 3,
         color : 'text-green-500',
     },
     {
         icon : <LocalMallIcon className='text-[#e90074] bg-[#840e55] rounded-md text-xl p-1'/>,
         text : 'Total Revenue',
-        value : 75,
+        value : 70,
         percentage : 3,
         color : 'text-red-500',
     },
